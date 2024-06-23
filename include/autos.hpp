@@ -34,6 +34,9 @@ extern void close();
  * Scores 6 balls in the far goal. This is typically only used when we have supreme confidence in our
  * alliance partner, or in elimination matches where the Autonomous Win Point is irrelevant.
  *
+ * Link below to a video of this routine
+ * https://media.discordapp.net/attachments/709813494899277855/1244361717983739954/IMG_4729.mov?ex=6679bfa8&is=66786e28&hm=ce9e3add4ebe267eadb13b2b47506a137ab88b929870f3c6b6d2282d18f697c0&
+ *
  * 1. Deploy intake
  * 2. Rush to the middle of the field
  * 3. Knock the middle 2 balls towards the goal
