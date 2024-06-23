@@ -17,7 +17,6 @@ void awp() {
 
     chassis.turnToHeading(0, 800);
 
-    // chassis.moveToPoint(-33, -28, 3000, {.forwards = false});
     chassis.follow(awp1_txt, 10, 4500, false);
     chassis.turnToPoint(-48, -56, 700, {.forwards = false});
     intake.move(0);

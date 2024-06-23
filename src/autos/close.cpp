@@ -1,8 +1,6 @@
 #include "autos.hpp"
 #include "devices.hpp"
 
-ASSET(closeSide1_txt);
-
 void close() {
     wingsLeft.set_value(true);
     chassis.setPose(-28.4, -55, 0);
@@ -44,5 +42,4 @@ void close() {
     pros::delay(500);
     chassis.moveToPoint(-39, -64, 1000, {.forwards = false});
     chassis.turnToHeading(90, 1000, {.minSpeed = 60});
-    //   chassis.follow(closeSide1_txt, 15, 3000, false);
 }
