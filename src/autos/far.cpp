@@ -27,7 +27,6 @@ void far() {
     chassis.waitUntil(30);
     wingsLeft.set_value(true);
     intake.move(0);
-    // chassis.turnToHeading(180, 300, {.maxSpeed = 30});
     chassis.turnToHeading(205, 400);
     wingsLeft.set_value(false);
     chassis.moveToPoint(68, -25, 800, {.forwards = false, .minSpeed = 127});

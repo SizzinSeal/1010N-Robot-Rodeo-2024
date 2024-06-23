@@ -33,18 +33,6 @@ void initialize() {
 }
 
 /**
- * @brief runs after #initialize, and only if connected to field control
- *
- */
-void competition_initialize() {}
-
-/**
- * @brief runs when field control is set to disabled
- *
- */
-void disabled() {}
-
-/**
  * @brief runs when field control is set to autonomous
  *
  */
@@ -85,6 +73,8 @@ void opcontrol() {
         const bool outtakeButtonPressed = master.get_digital(OUTTAKE_BUTTON);
         if (intakeButtonPressed) intake.move_velocity(INTAKE_SPEED);
         else if (outtakeButtonPressed) {
+            // we outtake slowly if neither wing button is pressed to make it extra clear
+            // that we are not possessing multiple balls
             if (leftWingButtonPressed || rightWingButtonPressed) intake.move(-OUTTAKE_FAST_SPEED);
             else intake.move(-OUTTAKE_SLOW_SPEED);
         } else intake.move(0);
@@ -92,7 +82,7 @@ void opcontrol() {
         // drivetrain
         const int throttle = master.get_analog(THROTTLE_AXIS);
         const int steer = master.get_analog(STEER_AXIS);
-        chassis.arcade(throttle, steer);
+        chassis.arcade(throttle, steer, false, DESATURATION_BIAS);
 
         // delay to save resources
         pros::delay(10);
