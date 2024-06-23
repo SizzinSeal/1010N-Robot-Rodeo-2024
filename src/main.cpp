@@ -1,28 +1,32 @@
 #include "main.h"
 #include "devices.hpp"
+#include "fmt/core.h"
 #include "opcontrol.hpp"
 #include "autos.hpp"
 #include "robodash/views/selector.hpp"
 
 rd::Selector selector({{"AWP", &awp}, {"Close", &close}, {"Far", &far}, {"Skills", &skills}});
+rd_view_t* view = rd_view_create("Odometry");
 
 /**
  * @brief entry point of the program
  *
  */
 void initialize() {
-    pros::lcd::initialize(); // initialize brain screen
     chassis.calibrate(); // calibrate sensors
     intake.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE); // set intake to brake
 
     // thread to print location on brain screen
     pros::Task screenTask([&]() {
+        // create a label on the brain screen to display robot location
+        lv_obj_t* label = lv_label_create(rd_view_obj(view));
+        lv_obj_align(label, LV_ALIGN_LEFT_MID, 0, 0);
         while (true) {
             // print robot location to the brain screen
-            pros::lcd::print(0, "X: %f", chassis.getPose().x); // x
-            pros::lcd::print(1, "Y: %f", chassis.getPose().y); // y
-            pros::lcd::print(2, "Theta: %f", chassis.getPose().theta); // heading
-            // delay to save resources
+            const std::string output = fmt::format("X: {}\nY: {}\nTheta: {}", chassis.getPose().x, chassis.getPose().y,
+                                                   chassis.getPose().theta);
+            lv_label_set_text(label, output.c_str());
+            //  delay to save resources
             pros::delay(10);
         }
     });
@@ -44,13 +48,20 @@ void disabled() {}
  * @brief runs when field control is set to autonomous
  *
  */
-void autonomous() { selector.run_auton(); }
+void autonomous() {
+    // run the selected autonomous routine
+    selector.run_auton();
+    // focus on the odometry view
+    rd_view_focus(view);
+}
 
 /**
  * @brief runs when field control is set to opcontrol
  *
  */
 void opcontrol() {
+    // focus on the odometry view
+    rd_view_focus(view);
     // lift the tracking wheels
     trackingWheelLift.set_value(true);
     bool hangToggle = false; // hang mechanism toggle
