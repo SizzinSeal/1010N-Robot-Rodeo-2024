@@ -53,6 +53,9 @@ void opcontrol() {
     // lift the tracking wheels
     trackingWheelLift.set_value(true);
     bool hangToggle = false; // hang mechanism toggle
+    // put the wings up in case the auto did not have enough time to do so
+    wingsLeft.set_value(false);
+    wingsRight.set_value(false);
 
     // loop while in driver control
     while (true) {

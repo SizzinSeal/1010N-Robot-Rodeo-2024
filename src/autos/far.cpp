@@ -9,7 +9,7 @@ void far() {
     chassis.setPose(37, -54, 180); // set the starting position of he robot
 
     // rush to the center, knock the first ball towards the goal
-    chassis.moveToPose(28, -12, 180, 1500, {.forwards = false, .minSpeed = 100});
+    chassis.moveToPose(28, -13, 180, 1500, {.forwards = false, .minSpeed = 100});
     chassis.turnToPoint(13, -8, 800, {.minSpeed = 127});
     wingsRight.set_value(true);
 
@@ -37,7 +37,7 @@ void far() {
     chassis.waitUntil(30);
     wingsLeft.set_value(true);
     intake.brake();
-    chassis.waitUntil(47);
+    chassis.waitUntil(49);
     wingsLeft.set_value(false);
     chassis.turnToHeading(205, 400);
 
@@ -47,8 +47,8 @@ void far() {
 
     // turn around and push the ball in the intake into the goal, then back up
     chassis.turnToHeading(100, 200, {.minSpeed = 127});
-    chassis.turnToPoint(64, -25, 500);
-    chassis.moveToPoint(64, -25, 800, {.minSpeed = 127});
+    chassis.turnToPoint(67, -25, 500);
+    chassis.moveToPoint(67, -25, 800, {.minSpeed = 127});
     intake.move(-127);
     chassis.moveToPoint(62, -31, 700, {.forwards = false, .minSpeed = 100});
 
@@ -64,11 +64,12 @@ void far() {
     chassis.moveToPose(47, -5, 90, 800, {.forwards = false, .minSpeed = 127});
 
     // back up, turn around, and push the ball in the intake into the goal
-    chassis.moveToPoint(37, -5, 500, {.minSpeed = 127});
+    chassis.moveToPose(37, -5, 270, 500, {.minSpeed = 127});
+    pros::delay(300);
     wingsLeft.set_value(false);
     wingsRight.set_value(false);
-    chassis.turnToHeading(90, 600);
-    chassis.moveToPoint(55, -8, 700, {.minSpeed = 127});
+    chassis.turnToHeading(90, 800);
+    chassis.moveToPoint(55, -8, 500, {.minSpeed = 127});
     intake.move(-127);
 
     // back up so we aren't touching any balls when the autonomous period ends
