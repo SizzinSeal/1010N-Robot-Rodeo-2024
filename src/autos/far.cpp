@@ -9,13 +9,13 @@ void far() {
     chassis.setPose(37, -54, 180); // set the starting position of he robot
 
     // rush to the center, knock the first ball towards the goal
-    chassis.moveToPose(27, -12, 180, 1500, {.forwards = false, .minSpeed = 100});
+    chassis.moveToPose(28, -12, 180, 1500, {.forwards = false, .minSpeed = 100});
     chassis.turnToPoint(13, -8, 800, {.minSpeed = 127});
     wingsRight.set_value(true);
 
     // acquire the second ball at the middle of the field
     intake.move(127);
-    chassis.moveToPoint(13, -8, 800, {.minSpeed = 100});
+    chassis.moveToPoint(13, -10, 800, {.minSpeed = 100});
     wingsRight.set_value(false); // retract the wing that was deployed to knock the first ball
 
     // back up and roll the second ball towards the goal
@@ -37,12 +37,13 @@ void far() {
     chassis.waitUntil(30);
     wingsLeft.set_value(true);
     intake.brake();
-    chassis.turnToHeading(205, 400);
+    chassis.waitUntil(47);
     wingsLeft.set_value(false);
+    chassis.turnToHeading(205, 400);
 
     // push the 2 balls into the goal with the back of the robot and back up
     chassis.moveToPoint(68, -25, 800, {.forwards = false, .minSpeed = 127});
-    chassis.moveToPoint(68, -35, 600, {.minSpeed = 127});
+    chassis.moveToPoint(68, -30, 600, {.minSpeed = 127});
 
     // turn around and push the ball in the intake into the goal, then back up
     chassis.turnToHeading(100, 200, {.minSpeed = 127});
