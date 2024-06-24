@@ -46,8 +46,8 @@ void far() {
     chassis.moveToPoint(68, -30, 600, {.minSpeed = 127});
 
     // turn around and push the ball in the intake into the goal, then back up
-    chassis.turnToHeading(100, 200, {.minSpeed = 127});
-    chassis.turnToPoint(67, -25, 500);
+    chassis.turnToHeading(100, 700, {.minSpeed = 127});
+    chassis.turnToHeading(15, 600);
     chassis.moveToPoint(67, -25, 800, {.minSpeed = 127});
     intake.move(-127);
     chassis.moveToPoint(62, -31, 700, {.forwards = false, .minSpeed = 100});
@@ -68,8 +68,8 @@ void far() {
     pros::delay(300);
     wingsLeft.set_value(false);
     wingsRight.set_value(false);
-    chassis.turnToHeading(90, 800);
-    chassis.moveToPoint(55, -8, 500, {.minSpeed = 127});
+    chassis.turnToHeading(90, 700);
+    chassis.moveToPoint(55, -8, 700, {.minSpeed = 127});
     intake.move(-127);
 
     // back up so we aren't touching any balls when the autonomous period ends
