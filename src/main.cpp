@@ -74,7 +74,7 @@ void opcontrol() {
         // intake
         const bool intakeButtonPressed = master.get_digital(INTAKE_BUTTON);
         const bool outtakeButtonPressed = master.get_digital(OUTTAKE_BUTTON);
-        if (intakeButtonPressed) intake.move_velocity(INTAKE_SPEED);
+        if (intakeButtonPressed) intake.move(INTAKE_SPEED);
         else if (outtakeButtonPressed) {
             // we outtake slowly if neither wing button is pressed to make it extra clear
             // that we are not possessing multiple balls

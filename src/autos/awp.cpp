@@ -26,8 +26,8 @@ void awp() {
     chassis.turnToHeading(-90, 800, {.minSpeed = 60});
     chassis.waitUntilDone();
     wingsLeft.set_value(false);
-    chassis.turnToPoint(-5, -75, 1000);
+    chassis.turnToPoint(-5, -70, 1000);
     intake.move(-127);
-    chassis.moveToPoint(-7, -59, 1200);
-    chassis.turnToHeading(90, 1000, {.minSpeed = 20});
+    chassis.moveToPoint(-6, -55, 1200);
+    chassis.turnToHeading(90, 1000, {.minSpeed = 30});
 }

@@ -10,26 +10,26 @@ void far() {
 
     // rush to the center, knock the first ball towards the goal
     chassis.moveToPose(28, -13, 180, 1500, {.forwards = false, .minSpeed = 100});
-    chassis.turnToPoint(13, -8, 800, {.minSpeed = 127});
+    chassis.turnToPoint(13, -6, 800, {.minSpeed = 127});
     wingsRight.set_value(true);
 
     // acquire the second ball at the middle of the field
     intake.move(127);
-    chassis.moveToPoint(13, -10, 800, {.minSpeed = 100});
+    chassis.moveToPoint(13, -8, 800, {.minSpeed = 100});
     wingsRight.set_value(false); // retract the wing that was deployed to knock the first ball
 
     // back up and roll the second ball towards the goal
     chassis.moveToPoint(22, -20, 1000, {.forwards = false, .minSpeed = 90});
     chassis.turnToHeading(60, 400);
-    intake.move(-70);
+    intake.move(-68);
 
     // move towards the starting position and turn to face the ball in the alley
-    chassis.turnToPoint(38, -55, 400, {.forwards = false, .minSpeed = 1});
-    chassis.moveToPose(38, -55, 0, 1000, {.forwards = false, .minSpeed = 90});
+    chassis.turnToPoint(37, -55, 400, {.forwards = false, .minSpeed = 1});
+    chassis.moveToPose(37, -55, 0, 1000, {.forwards = false, .minSpeed = 90});
     chassis.turnToHeading(-90, 700);
 
     // retrieve the ball in the alley
-    chassis.moveToPoint(19, -59, 1000, {.minSpeed = 90}); // go get ball under matchloader
+    chassis.moveToPoint(19, -57, 1000, {.minSpeed = 90}); // go get ball under matchloader
     intake.move(127);
 
     // go to the matchloader while pushing the preload, and knock the ball out of the matchload zone
