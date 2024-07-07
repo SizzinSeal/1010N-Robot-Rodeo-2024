@@ -12,7 +12,7 @@ void skills() {
     pros::delay(200);
     wingsRight.set_value(false);
     // line up to matchload
-    chassis.moveToPoint(-61.3, -42, 1000, {.minSpeed = 1}); // move to shooting pos
+    chassis.moveToPoint(-60.3, -44, 1000, {.minSpeed = 1}); // move to shooting pos
     // chassis.turnToHeading(72, 800, {}); // turn to shoot
     chassis.turnToPoint(50, -3, 800);
     chassis.moveToPoint(-61, -42, 700, {.forwards = false, .minSpeed = 30});
@@ -20,8 +20,9 @@ void skills() {
     chassis.waitUntilDone();
     auto pose = chassis.getPose();
     wingsRight.set_value(true);
-    kicker.move(127);
-    pros::delay(23500);
+    // TODO: uncomment this
+    // kicker.move(95);
+    // pros::delay(23500);
     kicker.move(0);
     chassis.setPose(pose);
     //   descore
@@ -33,11 +34,11 @@ void skills() {
 
     // get to the other matchload bar
     chassis.swingToHeading(-80, lemlib::DriveSide::RIGHT, 1000, {.maxSpeed = 70, .minSpeed = 60}); // turn to middle
-    chassis.waitUntil(4);
+    chassis.waitUntil(3);
     wingsLeft.set_value(false);
-    chassis.moveToPoint(-11, -55, 2000, {.forwards = false, .minSpeed = 117, .earlyExitRange = 20}); // move to middle
-    chassis.moveToPose(5, -52.5, -90, 1400, {.forwards = false, .minSpeed = 100}); // move to far side matchloader
-    chassis.waitUntil(18);
+    chassis.moveToPoint(-11, -54, 2000, {.forwards = false, .minSpeed = 117, .earlyExitRange = 20}); // move to middle
+    chassis.moveToPose(5, -51.5, -90, 1400, {.forwards = false, .minSpeed = 100}); // move to far side matchloader
+    chassis.waitUntil(23);
     wingsRight.set_value(true);
     chassis.moveToPose(53, -42, -125, 1100,
                        {.forwards = false, .minSpeed = 80, .earlyExitRange = 5}); // move to descore
@@ -46,7 +47,7 @@ void skills() {
     pros::delay(600);
     wingsLeft.set_value(false);
 
-    chassis.moveToPoint(57, -28, 1000, {.forwards = false, .minSpeed = 100});
+    chassis.moveToPoint(57, -26, 1000, {.forwards = false, .minSpeed = 100});
     chassis.moveToPoint(57, -32, 500, {.minSpeed = 90}); // back up
     chassis.moveToPoint(57, -25, 800, {.forwards = false, .minSpeed = 127});
     wingsRight.set_value(false);
@@ -62,7 +63,7 @@ void skills() {
     chassis.turnToPoint(50, -5, 500, {.forwards = false});
     chassis.moveToPoint(50, -5, 1000, {.forwards = false, .minSpeed = 100});
 
-    chassis.swingToPoint(15.8, -33, lemlib::DriveSide::RIGHT, 400, {.forwards = false, .minSpeed = 127});
+    chassis.swingToPoint(15.8, -33, lemlib::DriveSide::RIGHT, 400, {.forwards = false, .minSpeed = 127}); //-33
     chassis.waitUntilDone();
     wingsLeft.set_value(false);
     chassis.moveToPose(14, -20, 90, 1000, {.forwards = false, .minSpeed = 90});
@@ -107,10 +108,10 @@ void skills() {
     chassis.waitUntilDone();
     wingsRight.set_value(false);
     wingsLeft.set_value(false);
-    chassis.moveToPoint(28, 20, 600, {.maxSpeed = 65, .minSpeed = 45});
-    chassis.turnToPoint(33, 57, 500, {.forwards = false});
+    chassis.moveToPoint(34, 20, 600, {.maxSpeed = 65, .minSpeed = 45});
+    chassis.turnToPoint(36, 57, 500, {.forwards = false});
     wingsLeft.set_value(true);
-    chassis.moveToPoint(32, 58, 2500, {.forwards = false, .maxSpeed = 100, .minSpeed = 90});
+    chassis.moveToPoint(36, 58, 2500, {.forwards = false, .maxSpeed = 100, .minSpeed = 90});
 
     chassis.turnToHeading(270, 600);
     wingsLeft.set_value(true);
@@ -127,7 +128,7 @@ void skills() {
     wingsLeft.set_value(false);
     chassis.turnToHeading(270, 700);
     hang.set_value(true);
-    chassis.moveToPose(-20, 73, 270, 1200, {.maxSpeed = 80, .minSpeed = 70});
+    chassis.moveToPose(-20, 70, 270, 1200, {.maxSpeed = 80, .minSpeed = 70});
     chassis.waitUntilDone();
     hang.set_value(false);
 }

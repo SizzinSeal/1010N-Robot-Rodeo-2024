@@ -37,10 +37,11 @@ void initialize() {
  *
  */
 void autonomous() {
+    skills();
     // run the selected autonomous routine
-    selector.run_auton();
+    // selector.run_auton();
     // focus on the odometry view
-    rd_view_focus(view);
+    // rd_view_focus(view);
 }
 
 /**
@@ -66,10 +67,16 @@ void opcontrol() {
         // wings
         const bool leftWingButtonPressed = master.get_digital(LEFT_WING_BUTTON);
         const bool rightWingButtonPressed = master.get_digital(RIGHT_WING_BUTTON);
-        if (leftWingButtonPressed) wingsLeft.set_value(true);
-        else wingsLeft.set_value(false);
-        if (rightWingButtonPressed) wingsRight.set_value(true);
-        else wingsRight.set_value(false);
+        const bool allWingButtonPressed = master.get_digital(ALL_WING_BUTTON);
+        if (allWingButtonPressed) {
+            wingsLeft.set_value(true);
+            wingsRight.set_value(true);
+        } else {
+            if (leftWingButtonPressed) wingsLeft.set_value(true);
+            else wingsLeft.set_value(false);
+            if (rightWingButtonPressed) wingsRight.set_value(true);
+            else wingsRight.set_value(false);
+        }
 
         // intake
         const bool intakeButtonPressed = master.get_digital(INTAKE_BUTTON);
@@ -86,6 +93,8 @@ void opcontrol() {
         const int throttle = master.get_analog(THROTTLE_AXIS);
         const int steer = master.get_analog(STEER_AXIS);
         chassis.arcade(throttle, steer, false, DESATURATION_BIAS);
+
+        kicker.move(95);
 
         // delay to save resources
         pros::delay(10);
